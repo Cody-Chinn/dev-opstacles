@@ -1,6 +1,13 @@
 # dev-opstacles
 A place for devs to share horror stories, advice and code
 
+# How to test locally
+- clone the repo
+- cd into firebase-auth-app
+- run `npm install`
+- add a .env file at the root level
+  - this step is crucial otherwise everything breaks. It's just a one line file
+- run `yarn start` and go to localhost:3000 if it doesn't open automatically in the browser
 
 # Initialized with Create React App
 
