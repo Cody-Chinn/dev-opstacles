@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# dev-opstacles
+A place for devs to share horror stories, advice and code
+
+
+# Initialized with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
