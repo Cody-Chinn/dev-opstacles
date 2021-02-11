@@ -7,8 +7,8 @@ const NavBar = (props) => {
       <Navbar.Brand href="/" style={styles.brand}>
         <img
           src="/logo192.png"
-          width="40"
-          height="40"
+          width="35"
+          height="35"
           className="inline align-top"
           alt="React logo"
         />{' '}
