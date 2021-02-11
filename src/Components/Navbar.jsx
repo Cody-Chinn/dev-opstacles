@@ -13,6 +13,7 @@ const NavBar = (props) => {
           alt="React logo"
         />{' '}
         Dev-Opstacles
+        git test please work
       </Navbar.Brand>
     </Navbar>
   )
