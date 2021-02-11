@@ -6,10 +6,12 @@ import Application from "./Components/Application";
 import UserProvider from "./Providers/UserProvider";
 import ProfilePage from "./Components/ProfilePage";
 import { UserContext } from "./Providers/UserProvider";
+import NavBar from "./Components/Navbar";
 function App() {
   
   return (
     <UserProvider>
+      <NavBar />
       <Application />
     </UserProvider>
   );
