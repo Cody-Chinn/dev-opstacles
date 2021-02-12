@@ -2,104 +2,118 @@ import React, {useState} from "react";
 import { Link } from "@reach/router";
 import { signInWithGoogle } from "../firebase";
 import { auth } from "../firebase";
+import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 
 const SignIn = () => {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
-    const signInWithEmailAndPasswordHandler = (event,email, password) => {
-      event.preventDefault();
-      auth.signInWithEmailAndPassword(email, password).catch(error => {
-      setError("Error signing in with password and email!");
-        console.error("Error signing in with password and email", error);
-      });
-    };
+  const signInWithEmailAndPasswordHandler = (event,email, password) => {
+    event.preventDefault();
+    auth.signInWithEmailAndPassword(email, password).catch(error => {
+    setError("Error signing in with password and email!");
+      console.error("Error signing in with password and email", error);
+    });
+  };
       
-    const onChangeHandler = (event) => {
-      const {name, value} = event.currentTarget;
-    
-      if(name === 'userEmail') {
-          setEmail(value);
-      }
-      else if(name === 'userPassword'){
-        setPassword(value);
-      }
-    };
+  const onChangeHandler = (event) => {
+    const {name, value} = event.currentTarget;
+  
+    if(name === 'userEmail') {
+        setEmail(value);
+    }
+    else if(name === 'userPassword'){
+      setPassword(value);
+    }
+  };
    
 
   return (
-    <div className="mt-8">
-      <h1 className="text-3xl mb-2 text-center font-bold">Sign In</h1>
-      <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
-        {error !== null && <div className = "py-4 bg-red-600 w-full text-white text-center mb-3">{error}</div>}
+    <Card style={styles.cardContainer}>
+      <Card.Header>Sign In</Card.Header>
+      <Card.Body style={styles.form}>
+        {error !== null && <Card.Text>{error}</Card.Text>}
         <form className="">
-          <div style={styles.form}>
-            <label htmlFor="userEmail" className="block">
+          <Card.Text>
+            <label htmlFor="userEmail" className="block" style={styles.formLabel}>
               Email:
             </label>
             <input
               type="email"
-              className="my-1 p-1 w-full"
               name="userEmail"
               value = {email}
               placeholder="email"
               id="userEmail"
               onChange = {(event) => onChangeHandler(event)}
             />
-          </div>
-          <div style={styles.form}> 
-            <label htmlFor="userPassword" className="block">
+          </Card.Text>
+          <Card.Text style={styles.formLabel}> 
+            <label htmlFor="userPassword" >
               Password:
             </label>
             <input
               type="password"
-              className="mt-1 mb-3 p-1 w-full"
               name="userPassword"
               value = {password}
               placeholder="Your Password"
               id="userPassword"
               onChange = {(event) => onChangeHandler(event)}
             />
-          </div>
-          <Button  variant="primary"  block onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
+          </Card.Text>
+          </form>
+        <div style={styles.buttonBar}>
+          <Button  variant="primary"  onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
             Sign in
           </Button>
-        </form>
-        <p className="text-center my-3">or</p>
-        <Button
-          block 
-          variant="secondary"
-          onClick={() => {
-            signInWithGoogle();
-          }}
-        >
-          Sign in with Google
-        </Button>
-        <p className="text-center my-3">
+          <p style={styles.orLabel}>or</p>
+          <Button
+            variant="secondary"
+            onClick={() => {
+              signInWithGoogle();
+            }}
+          >
+            Sign in with Google
+          </Button>
+        </div>
+        <p className="text-center">
           Don't have an account?{" "}
-          <Link to="signUp" className="text-blue-500 hover:text-blue-600">
+          <Link to="signUp">
             Sign up here
           </Link>{" "}
           <br />{" "}
-          <Link to="passwordReset" className="text-blue-500 hover:text-blue-600">
+          <Link to="passwordReset">
             Forgot Password?
           </Link>
         </p>
-      </div>
-    </div>
+      </Card.Body>
+    </Card>
   );
 };
 
 const styles = {
+  cardContainer: {
+    width: '30rem',
+    margin: '20px'
+  },
   form: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row'
+    textAlign: 'center'
+  },
+  formLabel: {
+    flex: 1,
+    padding: '0 8px'
+  },
+  buttonBar: {
+    padding: '5px',
+  },
+  orLabel: {
+    padding: '0 5px',
+    display: 'inline'
   }
 }
 
