@@ -33,64 +33,66 @@ const SignIn = () => {
    
 
   return (
-    <Card style={styles.cardContainer}>
-      <Card.Header>Sign In</Card.Header>
-      <Card.Body style={styles.form}>
-        {error !== null && <Card.Text>{error}</Card.Text>}
-        <form className="">
-          <Card.Text>
-            <label htmlFor="userEmail" className="block" style={styles.formLabel}>
-              Email:
-            </label>
-            <input
-              type="email"
-              name="userEmail"
-              value = {email}
-              placeholder="email"
-              id="userEmail"
-              onChange = {(event) => onChangeHandler(event)}
-            />
-          </Card.Text>
-          <Card.Text style={styles.formLabel}> 
-            <label htmlFor="userPassword" >
-              Password:
-            </label>
-            <input
-              type="password"
-              name="userPassword"
-              value = {password}
-              placeholder="Your Password"
-              id="userPassword"
-              onChange = {(event) => onChangeHandler(event)}
-            />
-          </Card.Text>
-          </form>
-        <div style={styles.buttonBar}>
-          <Button  variant="primary"  onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
-            Sign in
-          </Button>
-          <p style={styles.orLabel}>or</p>
-          <Button
-            variant="secondary"
-            onClick={() => {
-              signInWithGoogle();
-            }}
-          >
-            Sign in with Google
-          </Button>
-        </div>
-        <p className="text-center">
-          Don't have an account?{" "}
-          <Link to="signUp">
-            Sign up here
-          </Link>{" "}
-          <br />{" "}
-          <Link to="passwordReset">
-            Forgot Password?
-          </Link>
-        </p>
-      </Card.Body>
-    </Card>
+    <div style={styles.container}>
+      <Card style={styles.cardContainer}>
+        <Card.Header>Sign In</Card.Header>
+        <Card.Body style={styles.form}>
+          {error !== null && <Card.Text>{error}</Card.Text>}
+          <form className="">
+            <Card.Text>
+              <label htmlFor="userEmail" className="block" style={styles.formLabel}>
+                Email:
+              </label>
+              <input
+                type="email"
+                name="userEmail"
+                value = {email}
+                placeholder="email"
+                id="userEmail"
+                onChange = {(event) => onChangeHandler(event)}
+              />
+            </Card.Text>
+            <Card.Text style={styles.formLabel}> 
+              <label htmlFor="userPassword" >
+                Password:
+              </label>
+              <input
+                type="password"
+                name="userPassword"
+                value = {password}
+                placeholder="Your Password"
+                id="userPassword"
+                onChange = {(event) => onChangeHandler(event)}
+              />
+            </Card.Text>
+            </form>
+          <div style={styles.buttonBar}>
+            <Button  variant="primary"  onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
+              Sign in
+            </Button>
+            <p style={styles.orLabel}>or</p>
+            <Button
+              variant="secondary"
+              onClick={() => {
+                signInWithGoogle();
+              }}
+            >
+              Sign in with Google
+            </Button>
+          </div>
+          <p className="text-center">
+            Don't have an account?{" "}
+            <Card.Link to="signUp">
+              Sign up here
+            </Card.Link>{" "}
+            <br />{" "}
+            <Link to="passwordReset">
+              Forgot Password?
+            </Link>
+          </p>
+        </Card.Body>
+      </Card>
+    </div>
   );
 };
 
@@ -114,6 +116,11 @@ const styles = {
   orLabel: {
     padding: '0 5px',
     display: 'inline'
+  },
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 }
 
