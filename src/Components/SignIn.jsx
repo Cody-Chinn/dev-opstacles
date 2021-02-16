@@ -82,13 +82,13 @@ const SignIn = () => {
           </div>
           <p className="text-center">
             Don't have an account?{" "}
-            <Card.Link to="signUp">
+            <Card.Link href="signUp">
               Sign up here
             </Card.Link>{" "}
             <br />{" "}
-            <Link to="passwordReset">
+            <Card.Link href="passwordReset">
               Forgot Password?
-            </Link>
+            </Card.Link>
           </p>
         </Card.Body>
       </Card>
